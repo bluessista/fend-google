@@ -1,0 +1,50 @@
+body {
+  font-family: sans-serif;
+}
+
+#wrapper {
+  width: 320px;
+  border: 1px solid rgba(145, 145, 145, 0.5);
+  padding: 0 10px 10px;
+  box-shadow: 5px 5px 1px rgba(145, 145, 145, 0.25);
+  box-sizing: border-box;;
+  border-radius: 2.5px;
+  background-color: rgb(232, 232, 197);
+}
+
+h3 {
+  font-size: 30px;
+  text-shadow: 1px;
+}
+
+img {
+  width: 300px;
+  margin-bottom: 15px;
+}
+
+#facts {
+  width: 300px;
+  border: 1px solid rgba(145, 145, 145, 0.5);
+  padding: 0 15px;
+  box-sizing: border-box;
+  border-radius: 2.5px;
+  background-color: #fff;
+}
+
+.interestingFact {
+  font-style: italic;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.animalItem {
+  margin: 0;
+  padding: 0;
+}
+
+.animalItem li {
+  list-style: none;
+
+}
