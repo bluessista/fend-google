@@ -18,7 +18,6 @@ body {
     width: 100%;
     margin: 0 auto;
     height: auto;
-    /* background: linear-gradient(90.52563460645763deg, rgba(255, 0, 255,.5) 3.251953125%,rgba(255, 1, 253,0.5) 3.251953125%,rgba(255, 20, 234,0.5) 6.534016927083334%,rgba(255, 150, 104,0.5) 28.177897135416668%,rgba(255, 255, 0,0.5) 45.83007812499999%); */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -103,21 +102,6 @@ main {
     flex-direction: column;
 }
 
-#about {
-    height: 100vh;
-    width: 25%;
-    padding: 8% 1%;
-    background-color: white;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    background: rgba(215,199,237,0.6);
-}
-
 .project-item, .project-teaser img{
     -webkit-box-shadow: var(--shadow);
     -moz-box-shadow: var(--shadow);
@@ -169,7 +153,6 @@ main {
 
 .project-desc {
     padding-bottom: 1rem;
-    font-weight: light;
 }
 
 .project-teaser {
@@ -204,8 +187,22 @@ main {
     margin-bottom: 3%;
 }
 
+#about {
+    height: 100vh;
+    width: 25%;
+    padding: 8% 1%;
+    background-color: white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background: rgba(215,199,237,0.6);
+}
+
 .profile-img {
-    justify-self: center;
     padding: 2%;
     display: flex;
     align-items: center;
@@ -260,6 +257,7 @@ main {
     cursor: pointer;
 }
 
+/* DEVICES up to 990px width */
 @media screen and (max-width: 990px) {
     #about {
         padding: 9% 1%;
@@ -281,7 +279,7 @@ main {
     }
 }
 
-
+/* DEVICES up to 767px width */
 @media screen and (max-width: 767px) {
     header {
         height: 50px;
@@ -290,7 +288,7 @@ main {
 
     header nav {
         padding: 3rem;
-        line-height: .8rem;     
+        line-height: .8rem;
     }
 
     header nav h2{
@@ -351,6 +349,7 @@ main {
     }
 }
 
+/* DEVICES up to 480px width */
 @media screen and (max-width: 480px) {
     main {
         padding-top: 50px;
@@ -361,7 +360,7 @@ main {
     }
 
     .project-collection {
-        flex-direction: column;        
+        flex-direction: column;
     }
 
     .project-item {
