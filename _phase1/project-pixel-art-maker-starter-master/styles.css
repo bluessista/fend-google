@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    font-family: monospace;
+    background-color: rgba(141, 111, 217, 0.1);
+}
+
+h1 {
+    font-family: fantasy;
+    font-size: 70px;
+    margin: 0.2em;
+}
+
+h2 {
+    margin: 1em 0 0.25em;
+}
+
+h2:first-of-type {
+    margin-top: 0.5em;
+}
+
+table,
+tr,
+td {
+    border: 1px solid white;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+tr {
+    height: 20px;
+}
+
+td {
+      width: 20px;
+}
+
+input[type=number] {
+    width: 6em;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 1rem;
+}
+
+.settings, .canvas {
+  width: 100%;
+  border: 2px solid darkgrey;
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: rgb(141, 111, 217);
+}

@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+#wrapper {
+  width: 320px;
+  border: 1px solid rgb(236, 246, 237);
+  padding: 0 10px 10px;
+  box-shadow: 5px 5px 1px rgba(145, 145, 145, 0.20);
+  box-sizing: border-box;;
+  border-radius: .5em;
+  background: linear-gradient(113.23deg, rgba(98, 185, 183,1) 6.140625%,rgba(236, 246, 237,1) 95.51%);
+}
+
+h3 {
+  font-size: 30px;
+  text-shadow: 1px;
+}
+
+img {
+  width: 300px;
+  margin-bottom: 15px;
+  border-radius: .5em;
+  border: 1px solid transparent;
+}
+
+#facts {
+  width: 300px;
+  border: 1px solid rgb(98, 185, 183);
+  padding: 0 15px;
+  box-sizing: border-box;
+  border-radius: .5em;
+  background-color: #fff;
+  font-size: 0.9rem;
+}
+
+.interestingFact {
+  font-style: italic;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.animalItem {
+  margin: 0;
+  padding: 0;
+}
+
+.animalItem li {
+  list-style: none;
+}

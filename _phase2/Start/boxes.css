@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.nav-container, .footer-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-container {
+  justify-content: flex-end;
+  min-height: 70px;
+}
+
+.nav-container  ul, .footer-container ul {
+  display: flex;
+}
+
+.nav-container ul li, .footer-container ul li {
+  list-style: none;
+}
+
+.nav-container ul li:last-child {
+  margin-right: 4em;
+}
+
+.nav-container ul li a, .footer-container ul li a  {
+  text-decoration: none;
+  padding: 1.7em 2em;
+  transition: .3s;
+}
+
+.nav-container ul li a {
+    color: #333;
+}
+
+.nav-container ul li a:hover {
+  color: rgb(83, 138, 100);
+  text-decoration: underline;
+}
+
+.content-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box {
+  width: 100%;
+  height: 400px;
+  transition: ease-out .4s;
+}
+
+.box:hover {
+  background-color: rgba(0,0,0, .5);
+}
+
+.box1 {
+  background-color: rgb(130, 204, 170);
+}
+
+.box2 {
+  background-color: rgb(224, 149, 110);
+  width: 20%;
+}
+
+.box3 {
+  background-color: rgb(83, 149, 156);
+  width: 60%;
+}
+
+.box4 {
+  background-color: rgb(244, 236, 136);
+  width: 20%;
+}
+
+.box5 {
+  background-color: rgb(167, 134, 207);
+  width: 50%;
+}
+
+.box6 {
+  background-color: rgb(179, 122, 153);
+  width: 50%;
+}
+
+.box7 {
+  background-color: rgb(119, 129, 175);
+  width: 33.33%;
+}
+
+.box8 {
+  background-color: rgb(255, 78, 73);
+  width: 33.33%;
+}
+
+.box9 {
+  background-color: rgb(83, 138, 100);
+  width: 33.34%;
+}
+
+.footer-container {
+  justify-content: space-around;
+  min-height: 140px;
+  background-color: rgb(83, 83, 83);
+  width: 100%;
+}
+
+.footer-container ul li a {
+    color: #fff;
+}
+
+.footer-container ul li a:hover {
+  color: rgba(130, 204, 170, .8);
+  text-decoration: underline;
+}
