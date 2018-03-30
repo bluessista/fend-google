@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-const cards = [
+var icons = [
     'bomb', 'bomb', 
     'diamond', 'diamond', 
     'bicycle', 'bicycle', 
@@ -10,10 +10,23 @@ const cards = [
     'beer', 'beer',
     'anchor', 'anchor',
     'android', 'android'
-]
-
-
-
+];
+var opened = []; //stores the cards later
+var match = 0;
+var $scorePanel = document.querySelector('.score-panel');
+var moves = 0;
+var moveCount = document.querySelector('.moves');
+var currentSeconds;
+var second = 0;
+var timer = document.querySelector('.time');
+var ratingStars = document.querySelector('.fa-star');
+var gameboard = document.querySelector('.gameboard');
+var card = document.querySelector('.card');
+var stars3 = 10;
+var stars2 = 18;
+var star1 = 30;
+var successDelay = 400;
+var reset = document.querySelector('.restart');
 
 /*
  * Display the cards on the page
@@ -21,9 +34,23 @@ const cards = [
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+var init = () => {
+    var cards = shuffle(icons);
+    generateCards(icons);
+
+    // gameboard.innerHTML = '';
+    // match = 0;
+    // moves = 0;
+    moveCount.innerHTML = ('0');
+    // resetTimer(currentIndex);
+    // second = 0;
+    timer.innerHTML = (`${second}`);
+ 
+
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
+const shuffle = (array) => {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
@@ -37,7 +64,22 @@ function shuffle(array) {
     return array;
 }
 
-shuffle(cards);
+const generateCards = (array) => {
+    for(var i = 0; i < array.length; i++) {
+        var cardLi = gameboard.appendChild(document.createElement('li'));
+        cardLi.classList.add('card');
+        cardLi.innerHTML = '<i class="fa fa-'+icons[i]+'"></i>';
+    };
+}
+
+// Game Winner
+// const winningPopUp{
+//     swal({
+
+//     })
+// }
+
+init();
 
 
 /*
