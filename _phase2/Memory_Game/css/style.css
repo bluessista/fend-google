@@ -85,6 +85,9 @@ h1 {
     font-size: 33px;
 }
 
+.gameboard .card.notmatch {
+    background: rgb(142, 93, 93);
+  }
 /*
  * Styles for the Score Panel
  */
