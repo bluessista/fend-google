@@ -1,6 +1,18 @@
 /*
  * Create a list that holds all of your cards
  */
+const cards = [
+    'bomb', 'bomb', 
+    'diamond', 'diamond', 
+    'bicycle', 'bicycle', 
+    'earlybirds', 'earlybirds', 
+    'bug', 'bug',
+    'beer', 'beer',
+    'anchor', 'anchor',
+    'android', 'android'
+]
+
+
 
 
 /*
@@ -24,6 +36,8 @@ function shuffle(array) {
 
     return array;
 }
+
+shuffle(cards);
 
 
 /*
