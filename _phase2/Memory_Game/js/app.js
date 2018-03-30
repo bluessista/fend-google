@@ -42,15 +42,15 @@ var init = () => {
     // match = 0;
     // moves = 0;
     moveCount.innerHTML = ('0');
-    // resetTimer(currentIndex);
+    resetTimer(currentSeconds);
     // second = 0;
     timer.innerHTML = (`${second}`);
- 
+    startTimer();
 
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
-const shuffle = (array) => {
+function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
@@ -64,6 +64,7 @@ const shuffle = (array) => {
     return array;
 }
 
+//Generate all Cards with shuffled Icons
 const generateCards = (array) => {
     for(var i = 0; i < array.length; i++) {
         var cardLi = gameboard.appendChild(document.createElement('li'));
@@ -72,12 +73,23 @@ const generateCards = (array) => {
     };
 }
 
-// Game Winner
-// const winningPopUp{
-//     swal({
+// Handle Timer - restart when page is loaded
+const resetTimer = (seconds) => {
+    if(seconds) {
+        clearInterval(seconds);
+    }
+}
 
-//     })
-// }
+const startTimer = () => {
+    currentSeconds = setInterval(handleSeconds, 1000);
+}
+
+const handleSeconds = () => {
+    timer.innerHTML = second;
+    second = second + 1;
+}
+
+
 
 init();
 
