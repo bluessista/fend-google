@@ -111,7 +111,7 @@ main {
 }
 
 .project-item {
-    height: 10rem;
+    height: 11rem;
     margin: 2px;
     background: rgba(56, 26, 97, 0.8);
     flex: 1;
@@ -120,17 +120,22 @@ main {
 }
 
 .googlemap:hover {
-    background: url(../img/google-maps-project.png) no-repeat;
+    background: url('../img/google-maps-project.png') no-repeat;
     background-size: cover;
 }
 
 .tribute:hover {
-    background: url(../img/hidden-figures-project.png) no-repeat;
+    background: url('../img/hidden-figures-project.png') no-repeat;
     background-size: cover;
 }
 
 .tradingcard:hover {
-    background: url(../img/tradingcard-project.png) no-repeat;
+    background: url('../img/tradingcard-project.png') no-repeat;
+    background-size: cover;
+}
+
+.travelkids:hover {
+    background: url('../img/travelkids-home.png') no-repeat;
     background-size: cover;
 }
 
@@ -169,15 +174,19 @@ main {
 .project-teaser:hover figure figcaption {
     display: block;
     position: absolute;
-    bottom: 3%;
+    bottom: 2%;
     height: 21.5%;
     line-height: 2rem;
     background: rgba(56, 26, 97, 0.9);
     color: white;
     text-align: center;
-    width: 98%;
+    width: 98.2%;
     padding: 1.5rem 1rem;
     font-size: 1.5rem;
+}
+
+.project-teaser:hover figure figcaption a {
+    color: white;
 }
 
 .project-collection {
