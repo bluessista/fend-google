@@ -43,10 +43,10 @@ h1 {
 .gameboard {
     width: 660px;
     min-height: 680px;
-    background: url('../img/gaming-pattern.png');
+    background: url('../img/diagmonds.png');
     padding: 32px;
-    border: 5px solid #7a43a4;
-    border-radius: 8px;
+    border: 5px solid #fff;
+    border-radius: 2px;
     box-shadow: 5px 8px 30px 0 rgba(46, 61, 73, 0.5);
     display: flex;
     flex-wrap: wrap;
@@ -58,7 +58,7 @@ h1 {
 .gameboard .card {
     height: 125px;
     width: 125px;
-    background: #f4e6fa;
+    background: url('../img/pow-star.png');
     font-size: 0;
     color: #ffffff;
     border-radius: 6px;
@@ -117,12 +117,70 @@ h1 {
     cursor: pointer;
 }
 
-.popup {
-    display: none;
+.swal2-modal {
+    left: unset;
+    top: unset;
+    height: 60%;
+}
+
+.swal2-icon {
+    width: 50%;
 }
 
 footer {
     text-align: center;
     font-size: 0.8rem;
     font-family: 'Courier New', Courier, monospace;
+}
+
+/* Small Devices */
+
+@media screen and (max-width: 600px) and (min-width: 400px) {
+    .gameboard {
+        width: 400px;
+        min-height: 400px;
+        padding: 5%;
+        border: 2px solid #fff;
+        margin: 0 0 1em;
+    }
+    
+    .gameboard .card {
+        height: 80px;
+        width: 80px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .score-panel {
+        width: 380px;
+    }
+
+    .swal2-modal {
+        height: 80%;
+    }
+}
+
+/* Mini Devices */
+
+@media screen and (max-width: 400px) and (min-width: 300px) {
+    .gameboard {
+        width: 300px;
+        min-height: 300px;
+        padding: 3%;
+        border: 2px solid #fff;
+    }
+    
+    .gameboard .card {
+        height: 65px;
+        width: 65px;
+    }
+    
+    .score-panel {
+        width: 280px;
+    }
+
+    .swal2-modal {
+        height: 90%;
+    }
+
 }

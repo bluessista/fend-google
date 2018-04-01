@@ -14,18 +14,18 @@ var icons = [
 var opened = []; //stores the cards
 var match = 0;
 var $scorePanel = document.querySelector('.score-panel');
-var moves = 0;
-var moveCount = document.querySelector('.moves');
-var currentSeconds;
-var second = 0;
-var timer = document.querySelector('.time');
-var ratingStars = document.querySelector('.fa-star');
-var gameboard = document.querySelector('.gameboard');
-var stars3 = 10;
+var moves = 0; //counts if two cards are opened
+var moveCount = document.querySelector('.moves'); //Counter for moves
+var currentSeconds; 
+var second = 0; //reset for seconds
+var timer = document.querySelector('.time'); //Counter for time in seconds
+var ratingStars = document.querySelectorAll('.fa-star'); //stars that can be achieved, depending on number of moves
+var gameboard = document.querySelector('.gameboard'); 
+var stars3 = 12; 
 var stars2 = 18;
-var star1 = 30;
-var allCardsOpen = icons.length / 2;
-var successDelay = 400;
+var star1 = 25;
+var allCardsOpen = icons.length / 2; //16 cards - means 8 matches for success -> 16/2=8
+var successDelay = 500;
 var reset = document.querySelector('.restart');
 
 /*
@@ -36,16 +36,18 @@ var reset = document.querySelector('.restart');
  */
 var init = () => {
     var cards = shuffle(icons);
+    gameboard.innerHTML = '';
     generateCards(icons);
-    // gameboard.innerHTML = '';
-    // match = 0;
-    // moves = 0;
+    match = 0;
     moveCount.innerHTML = ('0');
+    ratingStars.forEach(card => {
+        card.classList.remove('fa-star-o');
+    });
+    addCardListener();
+    second = 0;
     resetTimer(currentSeconds);
-    // second = 0;
     timer.innerHTML = (`${second}`);
     startTimer();
-    addCardListener();
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -73,12 +75,6 @@ const generateCards = (array) => {
 }
 
 // Handle Timer - restart when page is loaded
-const resetTimer = (seconds) => {
-    if(seconds) {
-        clearInterval(seconds);
-    }
-}
-
 const startTimer = () => {
     currentSeconds = setInterval(handleSeconds, 1000);
 }
@@ -88,67 +84,68 @@ const handleSeconds = () => {
     second = second + 1;
 }
 
+const resetTimer = (seconds) => {
+    if(seconds) {
+        clearInterval(seconds);
+    }
+}
+
 //Handle Rating
 const handleRating = (moves) => {
     var rates = 3;
     if(moves > stars3 && moves < stars2) {
-        ratingStars.classList.toggle('fa-star-o');
-        rating = 2;
+        ratingStars[2].classList.add('fa-star-o');
+        rates = 2;
     } else if (moves > stars2 && moves < star1) {
-        ratingStars.classList.toggle('fa-star-o');
-        rating = 1;
-    } else {
-        ratingStars.classList.toggle('fa-star-o');
-        rating = 0;
+        ratingStars[2].classList.add('fa-star-o');
+        ratingStars[1].classList.add('fa-star-o');
+        rates = 1;
+    } else if (moves > star1) {
+        ratingStars[2].classList.add('fa-star-o');
+        ratingStars[1].classList.add('fa-star-o');
+        ratingStars[0].classList.add('fa-star-o');
+        rates = 0;
     }
-    return { score: rating};
+    return { score: rates };
 }
 
-// Handle Card Moves
+// Handle Clicks = 2 clicks = 1 move
 const addCardListener = () => {
     var cards = gameboard.querySelectorAll('.card');
     cards.forEach(handleCards);
-
-    if (allCardsOpen === match) {
-        handleRating(moves);
-        var score = handleRating(moves).score;
-        setTimeout(function () {
-            winningPopUp(moves, score);
-        }, 500);
-    }
 };
 
 const handleCards = (card) => {
     card.addEventListener('click', function () {
-        if(this.hasAttribute('show') || this.hasAttribute('match')) {
+        if(this.classList.contains('show') || this.classList.contains('match')) {
             return true;
         }
+        
         var openCard = this.innerHTML;
         this.classList.add('open', 'show');
         opened.push(openCard);
-        console.log(this);
 
         if(opened.length > 1) {
             if(openCard === opened[0]) {
                 var cardsOpen = gameboard.querySelectorAll('.open');
 
-                cardsOpen.forEach((el) => {
-                    el.classList.add('match');
+                cardsOpen.forEach((card) => {
+                    card.classList.add('match', 'animated', 'tada');
                 });
 
                 setTimeout(function() {
                     var cardsMatch = gameboard.querySelectorAll('.match');
-                    cardsMatch.forEach((el) => {
-                        el.classList.remove('open', 'show');
+                    cardsMatch.forEach((card) => {
+                        card.classList.remove('open', 'show', 'animated', 'tada');
                     });
                 }, successDelay);
                 match++;
             } else {
                 var cardsOpen = gameboard.querySelectorAll('.open');
-                cardsOpen.forEach((el) => {
-                    el.classList.remove('nomatch');
+                cardsOpen.forEach((card) => {
+                    card.classList.remove('nomatch');
                     setTimeout(function() {
-                        el.classList.remove('open', 'show');
+                        card.classList.remove('open', 'show');
                     }, successDelay);
                 });
             }
@@ -157,24 +154,42 @@ const handleCards = (card) => {
             handleRating(moves);
             moveCount.innerHTML = moves;
         }
+        if (allCardsOpen === match) {
+            handleRating(moves);
+            var score = handleRating(moves).score;
+            setTimeout(function () {
+                winningPopUp(moves, score);
+            }, 500);
+        }
     });
 };
 
 // Game Winner Popup Box via Sweetalert2.js
 const winningPopUp = (moves, moveCount) => {
+    var title;
+    if (moves < stars3) {
+        title = "Herzlichen Glückwunsch! \nDu hast gewonnen!";
+    } else if (moves > stars3 && moves < stars2) {
+        title = "Du warst nahe dran! \nVersuch es gleich nochmal!";
+    } else if (moves > stars2 && moves < star1) {
+        title = "Das hätte besser laufen können! \n Gib nicht auf!";
+    } else {
+        title = "Schade, zu viele Züge \n Versuch es erneut!";
+    }
+
     swal({
 		allowEscapeKey: false,
 		allowOutsideClick: false,
-		title: 'Congratulations! You Won!',
-		text: 'With ' + moves + ' moves and ' + moveCount + ' Stars in ' + second + ' Seconds.\n Woooooo!',
+		title: title,
+		text: 'Mit ' + moves + ' Zügen und ' + moveCount + ' Sternen in ' + second + ' Sekunden.',
 		type: 'success',
 		confirmButtonColor: '#7a43a4',
-		confirmButtonText: 'Play again!'
-	}).then(function (isConfirm) {
-		if (isConfirm) {
-			initGame();
+		confirmButtonText: 'Nochmal spielen!'
+	}).then(function (clickConfirm) {
+		if (clickConfirm) {
+			init();
 		}
-	})
+    });
 }
 
 //Restart Game Popup via Sweetalert2.js
@@ -182,16 +197,13 @@ const restartingPopUp = () => {
     swal({
 		allowEscapeKey: false,
 		allowOutsideClick: false,
-		title: "You're tough!",
-		text: "Are you sure you wanna play again?",
-		type: 'warning',
-		showCancelButton: true,
+        title: "Huch, was ist los?",
+        text: "Starte jetzt neu!",
 		confirmButtonColor: '#7a43a4',
-		cancelButtonColor: '#f95c3c',
-		confirmButtonText: 'Yes, Mam',
-	}).then(function (isConfirm) {
-		if (isConfirm) {
-			initGame();
+        confirmButtonText: "Oh ja! Los geht's!",
+	}).then(function (clickConfirm) {
+		if (clickConfirm) {
+			init();
 		}
 	})
 }
