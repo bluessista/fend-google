@@ -1,5 +1,11 @@
 # Memory Game Project
 
+by Inga Schünemann
+
+Using the starter Code from Udacity and the [SweetAlert2](https://sweetalert2.github.io/) PopUp Modal for the winning message.
+It can be played on large and mobile screens. 
+Added some mobile styling as well.
+
 ## Table of Contents
 
 * [Instructions](#instructions)

@@ -39,6 +39,7 @@ var init = () => {
     gameboard.innerHTML = '';
     generateCards(icons);
     match = 0;
+    moves = 0;
     moveCount.innerHTML = ('0');
     ratingStars.forEach(card => {
         card.classList.remove('fa-star-o');
